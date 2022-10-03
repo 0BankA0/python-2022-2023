@@ -1,5 +1,5 @@
 import rekins
-from input import rekins
+from input import Rekins
 
 def datuIevade():
     klients = input("Ievadi vārdu: ")
