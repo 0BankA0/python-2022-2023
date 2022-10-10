@@ -9,10 +9,6 @@ class Rekins():
         self.materials = float(materials)
         self.laiks = datetime.datetime.now()
         
-
-
-
-
         self.aprekins()
 
     def izdrukat(self):
@@ -32,9 +28,8 @@ class Rekins():
         return rekina_summa
 
     def saglabat(self):
-        with open('dati.csv', 'a',encoding="utf-8",newline='') as fails:
+        with open('rekini.csv', 'w',encoding="utf-8",newline='') as fails:
             csvwrite = csv.writer(fails)
             csvwrite.writerow(['Klienta vārds','Veltījums','Izmēri','Materiāla cena','Laiks','Cena'])
             csvwrite.writerow([self.klients,self.veltijums,self.izmers,self.materials,self.laiks,self.aprekins()])
-
 
