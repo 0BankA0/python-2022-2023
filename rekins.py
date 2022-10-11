@@ -18,6 +18,8 @@ class Rekins():
         print("Materiāls:",self.materials)
         print("Laiks:",self.laiks)
         print("Apmaksas summa: ", self.aprekins())
+        date=[self.laiks,str(self.aprekins())]
+        return [x for x in date]
 
     def aprekins(self):
         darba_samaksa = 15
