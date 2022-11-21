@@ -17,14 +17,21 @@ def sutit(vards,zina):
     laiks = tagad.starftime("%y/%n/%d, %H:%M:%S")
     print(vards,zina,laiks)
 
-    rinda = {
+    rinda = [{
         "zina":zina,
         "vards":vards,
         "laiks":laiks
-    }
-    with open("chat.jason","w",encoding = 'utf-8') as f:
-        f.wrtie(json.dumps(rinda,indent=2,ensure_ascii=False))
+    }]
 
+    # with open ("chat.jason","r",encoding = 'utf-8') as f:
+    #     vecasZinas= f.read()
+    #     veciejson= json.loads(vecasZinas)
+
+    # veciejson.append(rinda)
+
+    with open("chat.jason","w",encoding = 'utf-8') as f:
+        f.write(json.dumps(rinda,indent=2,ensure_ascii=False))
+    return 'ok'
 @app.route('/datums')
 def datums():
     return "Šodien ir 14.novembris"
