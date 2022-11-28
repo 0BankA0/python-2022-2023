@@ -3,13 +3,22 @@
 from flask import Flask
 import json
 import datetime
-
+from flask_cors import CORS
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
+CORS(app)
 
 @app.route('/')
 def index():
     return "Hello World!"
+
+@app.route('/lasit')
+def lasit():
+    with open ("chat.json",'r', encoding='utf-8') as f:
+        zinas = f.read()
+        
+    return zinas
+        
 
 @app.route('/sutit/<vards>/<vecums>')
 def sutit(vards,zina):
@@ -23,14 +32,14 @@ def sutit(vards,zina):
         "laiks":laiks
     }]
 
-    # with open ("chat.jason","r",encoding = 'utf-8') as f:
-    #     vecasZinas= f.read()
-    #     veciejson= json.loads(vecasZinas)
+    with open ("chat.jason","r",encoding = 'utf-8') as f:
+         vecasZinas= f.read()
+         veciejson= json.loads(vecasZinas)
 
-    # veciejson.append(rinda)
+    veciejson.append(rinda)
 
     with open("chat.jason","w",encoding = 'utf-8') as f:
-        f.write(json.dumps(rinda,indent=2,ensure_ascii=False))
+        f.write(json.dumps(veciejson,indent=2,ensure_ascii=False))
     return 'ok'
 @app.route('/datums')
 def datums():

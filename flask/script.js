@@ -8,3 +8,23 @@ function sutitZinu(){
     chataZina.innerHTML += '<br/>' + manaZina.value
     fetch(API+'/suit/'+vards.value+'/'+manaZina.value)
 }
+
+async function ieladetChatZinas(){
+    let datNoServera = await fetch(API + "/lasit")
+    let dati = await datNoServera.jason()
+    console.log(dati)
+
+    chataZina.innerHTML = dati
+}
+
+//setInterval(ieladetChatZinas,1000)
+
+async function ieladetChatZinasJson(){
+    let datiNoServera = await fetch(API +'/lasit')
+    let dati = await datiNoServera
+
+    i=0;
+    while(i < await dati.length){
+        chataZina.innerHTML = chataZina.innerHTML + dati[i]['Vards'] + ":" + dati[i]['zinas'] + '<br'
+    }
+}
